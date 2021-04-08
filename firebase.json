@@ -2,12 +2,38 @@
   "database": {
     "rules": "database.rules.json"
   },
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  }
+  "hosting": [
+    {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "Sala-de-juegos",
+      "public": "dist/Sala-de-juegos",
+      "ignore": [
+        "**/.*"
+      ],
+      "headers": [
+        {
+          "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public,max-age=31536000,immutable"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
 }
