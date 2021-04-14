@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginServiceService {
 
+  id:string='';
   firebase :ConexionFirebaseDatabaseService;
   public isLogged:any = false;
   
@@ -22,7 +23,10 @@ export class LoginServiceService {
     this.firebase.col$('usuarios',(ref:any) => ref.where('email','==',user.email)).subscribe(res => {
       let usuario = <Usuario>res[0];
       if(usuario.password == user.password){
-        this.isLogged=true;
+        localStorage.setItem('isLogged','true');
+        localStorage.setItem('user',user.email);
+        
+        
         this.router.navigateByUrl('');
       }
     });
@@ -42,6 +46,13 @@ export class LoginServiceService {
       return true;
     });
 
+  }
+
+  Logout(){
+    localStorage.removeItem('isLogged');
+    localStorage.removeItem('user');
+
+    this.router.navigateByUrl('login');
   }
 
   

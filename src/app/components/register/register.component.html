@@ -1,33 +1,32 @@
-<div class="login-wrapper" fxLayout="row" fxFill fxLayoutAlign="space-evenly center">
-    <div class="left">
+  <div class="container">
+    <div class="text-center">
       <p><h1>Bienvenido a la Sala de Juegos<br>de Nicolas Pantano</h1>
-          <p><h5>Para continuar por favor <a routerLink="/login" class="linkVioleta">inicie sesion</a> o cree una cuenta</h5>
-      
-      
+        <p><h5>Para continuar por favor <a routerLink="/login" class="linkVioleta">inicie sesion</a> o cree una cuenta</h5>
     </div>
-    <div class="right">
+    <div class="box-parent">
       <mat-card class="box">
-          <mat-card-header>
-            <mat-card-title>Registro</mat-card-title>
-          </mat-card-header>
-      
-          <div class="form">
-            <mat-card-content>
-              <p>
-              <mat-form-field class="example-full-width">
-                <input type ="email" matInput placeholder="Email" [(ngModel)]='user.email'>
-              </mat-form-field>
-            </p>
-              <mat-form-field class="example-full-width">
-                <input type="password" matInput placeholder="Password" [(ngModel)]='user.password'>
-              </mat-form-field>
-            </mat-card-content>
-            <button mat-stroked-button color="primary" class="btn-block" (click)='Registrar()'>Registrarse</button>
-            
-          </div>
-        </mat-card>
+        <mat-card-header>
+          <mat-card-title>Nuevo Usuario</mat-card-title>
+        </mat-card-header>
+    
+        <div class="form">
+          <mat-card-content>
+            <p>
+            <mat-form-field class="example-full-width">
+              <input type ="email" matInput placeholder="Email" [(ngModel)]='user.email'>
+            </mat-form-field>
+          </p>
+            <mat-form-field class="example-full-width">
+              <input type="password" matInput placeholder="Password" [(ngModel)]='user.password'>
+            </mat-form-field>
+          </mat-card-content>
+          <button mat-stroked-button color="primary" class="btn-block" (click)='Registrar()'>Registrarse</button>
+          
+        </div>
+      </mat-card>
     </div>
-  </div>
+    </div>
+    
   
   
   

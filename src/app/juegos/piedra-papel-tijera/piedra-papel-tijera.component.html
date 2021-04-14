@@ -1,0 +1,53 @@
+<div class="container text-center">
+    <h1>Piedra papel o tijera</h1>
+    <p style="padding-bottom: 30px  ;">Piedra, papel o tijera es un juego infantil, un juego de manos en el que existen tres elementos: la piedra que vence a la tijera rompiéndola, la tijera que vence al papel cortándolo y el papel que vence a la piedra envolviéndola</p>
+    
+
+    <div class="text-center"*ngIf='estado=="0"'>
+      <button class="btn btn-jugar" (click)="estado = '1'">Jugar</button>
+    </div>
+
+    <div class="text-center" *ngIf='estado=="1"'>
+      <h3>Elija su jugada</h3>
+      <div class="row">
+        <div class="col-sm">
+          <img src="./assets/piedra.jpg" width="200" height="200" (click)='Jugar("piedra")'>
+        </div>
+        <div class="col-sm">
+          <img src="./assets/papel.jpg" width="200" height="200" (click)='Jugar("piedra")'>
+        </div>
+        <div class="col-sm">
+          <img src="./assets/tijera.jpg" width="200" height="200" (click)='Jugar("piedra")'>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf='estado=="2"' class="text-center">
+      <h3 *ngIf='resultado=="2"' style="color:blue">Usted ha ganado!</h3>
+      <h3 *ngIf='resultado=="4"' style="color:red">Usted ha perdido!</h3>
+      <h3 *ngIf='resultado=="3"'>Ha sido un empate</h3>
+      
+      <div class="row" style="margin-top: 45px;">
+        <div class="col-sm pr-0">
+          <h5>Su eleccion</h5><br>
+          <img [src]="'./assets/' + eleccionUsuario + '.jpg'" width="200" height="200">
+        </div>
+
+        <div class="col-sm px-0" style="display: flex; align-items: center; justify-content: center;">
+          <h1>VS</h1>
+        </div>
+
+        <div class="col-sm pl-0">
+          <h5>La maquina eligió</h5><br>
+          <img [src]="'./assets/' + eleccionMaquina + '.jpg'" width="200" height="200">
+        </div>
+      </div>
+
+      <button class="btn btn-jugar" (click)="estado = '1'">Volver a jugar</button>
+    </div>
+
+   
+
+
+
+  </div>

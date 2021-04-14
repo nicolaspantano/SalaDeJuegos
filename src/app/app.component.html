@@ -1,4 +1,4 @@
-<div>
+<!--<div>
   <nav class="navbar navbar-expand navbar-primary bg-primary">
     <a href="#" class="navbar-brand">
       <img src="../assets/logo.png" alt="">
@@ -13,8 +13,60 @@
         <a routerLink="quiensoy" class="nav-link">Quien Soy</a>
       </li>
 
+      <li class="nav-item">
+        <a routerLink="juegos/piedra-papel-tijera" class="nav-link">Piedra papel o tijera</a>
+      </li>
+
     </div>
   </nav>
-
-  <router-outlet></router-outlet>
+-->
+<div class="body">
+<div class="d-flex flex-column p-3 text-white sidebar " style="width: 280px;">
+  <img src="../assets/logo.png" height="50px" width="50px" class="text-center">
+    
+ 
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a routerLink="" class="nav-link text-white" routerLinkActive="activelink" [routerLinkActiveOptions]="{exact:true}">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+        Home
+      </a>
+    </li>
+    <li>
+      <a routerLink="quiensoy" class="nav-link text-white" routerLinkActive="activelink">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+        Quien Soy
+      </a>
+    </li>
+    <li>
+      <a routerLink="juegos/piedra-papel-tijera" class="nav-link text-white" routerLinkActive="activelink">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+        Piedra papel o tijera
+      </a>
+    </li>
+    <li>
+      <a routerLink="chat" class="nav-link text-white" routerLinkActive="activelink">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+        Chat
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    <button *ngIf="this.router.url != '/login' && this.router.url != '/register'" class="btn btn-logout">Cerrar Sesion</button>
+  </div>
 </div>
+
+<div class="content">
+  
+  <router-outlet></router-outlet> 
+  
+</div>
+
+</div>
+
+
+
+
+<!--</div>-->

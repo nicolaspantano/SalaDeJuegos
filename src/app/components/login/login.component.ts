@@ -23,4 +23,9 @@ export class LoginComponent implements OnInit {
     
     console.log( await this.loginService.Login(this.user));
   }
+
+  HardcodearUsuario(){
+    this.user.email='prueba@hotmail.com';
+    this.user.password='123456';
+  }
 }

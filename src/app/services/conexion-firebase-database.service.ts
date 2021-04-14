@@ -43,5 +43,10 @@ export class ConexionFirebaseDatabaseService {
     return  res;
   }
 
+  listen(){
+    const doc = this.bd.collection('chat').doc('mensajes');
+    
+  }
+
 
 }

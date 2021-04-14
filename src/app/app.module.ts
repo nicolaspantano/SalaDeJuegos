@@ -17,6 +17,13 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { RegisterComponent } from './components/register/register.component';
 import {MatButtonModule} from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { PiedraPapelTijeraComponent } from './juegos/piedra-papel-tijera/piedra-papel-tijera.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { TaTeTiComponent } from './juegos/ta-te-ti/ta-te-ti.component';
+
+
+
 
 
 
@@ -26,7 +33,14 @@ import {MatButtonModule} from '@angular/material/button';
     LoginComponent,
     HomeComponent,
     QuiensoyComponent,
-    RegisterComponent
+    RegisterComponent,
+    PiedraPapelTijeraComponent,
+    ChatComponent,
+    TaTeTiComponent
+ 
+    
+
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +53,10 @@ import {MatButtonModule} from '@angular/material/button';
     FlexLayoutModule,
     MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
-    MatButtonModule
+    MatButtonModule,
+    CommonModule,
+    
+    
     
   ],
   providers: [],

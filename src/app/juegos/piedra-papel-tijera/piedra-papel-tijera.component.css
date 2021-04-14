@@ -1,0 +1,19 @@
+.container{
+    align-items: center;
+    width: 100%;
+    margin-top:5%;
+}
+
+h1{
+    text-align: center;
+}
+
+.choices{
+    text-align: center;
+}
+
+
+.btn-jugar{
+    background-color: #673ab7;
+    color:white;
+}

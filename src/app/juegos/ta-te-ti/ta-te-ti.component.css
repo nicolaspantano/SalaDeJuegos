@@ -1,0 +1,15 @@
+
+
+.board{
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    border: 1px solid darkblue;
+    max-width: 70px;
+}
+
+.row{
+    text-align: center;
+    justify-content: center;
+}
+
