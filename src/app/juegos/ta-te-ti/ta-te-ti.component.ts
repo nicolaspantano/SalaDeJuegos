@@ -83,10 +83,8 @@ export class TaTeTiComponent implements OnInit {
   jugar() 
       {
         this.random = Math.floor(Math.random() * 8);
-        if (this.nuevoJuego.lugares[this.random] == "-") {
+        if (this.nuevoJuego.lugares[this.random] == "") {
           this.nuevoJuego.lugares[this.random] = this.maquina;
-         // document.images['rc' + this.random].src = "assets/images/" + this.maquina + ".gif";
-          //document.images['rc' + this.random].alt = this.maquina;
     
           this.nuevoJuego.resultado = this.nuevoJuego.signo(this.maquina, "maquina");
     
@@ -129,18 +127,22 @@ export class TaTeTiComponent implements OnInit {
           this.maquinamov();
 
         }*/
-        if(this.turnoActual=='usuario'){
-          this.lugares[id]=this.usuario;
-          this.turnoActual='maquina';
-
+        if(this.lugares[id]==''){
+          if(this.turnoActual=='usuario'){
+            this.lugares[id]=this.usuario;
+            this.turnoActual='maquina';
+  
+          }
+          else{
+            this.lugares[id]=this.maquina;
+            this.turnoActual="usuario";
+            
+          }
+          this.maquinamov();
         }
-        else{
-          this.lugares[id]=this.maquina;
-          this.turnoActual="usuario";
-          
-        }
+        
 
-        console.log(this.lugares);
+        
         
       }
 
