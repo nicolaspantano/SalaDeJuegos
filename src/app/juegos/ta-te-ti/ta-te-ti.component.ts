@@ -129,10 +129,82 @@ export class TaTeTiComponent implements OnInit {
       }
 
       reiniciarJuego(){
-
+        this.lugares = ['','','','','','','','',''];
       }
 
       comprobarGanador(){
 
+        let ganador;
+
+        if (this.lugares[0] == this.lugares[1] && this.lugares[1] == this.lugares[2]) {
+          if (this.lugares[0] == this.usuario) {
+              ganador = "usuario";
+          }else{
+            ganador = "maquina";
+          }
+
+      }
+      else if (this.lugares[3] == this.lugares[4]   && this.lugares[4] == this.lugares[5]) {
+        if (this.lugares[3] == this.usuario) {
+          ganador = "usuario";
+        }else{
+        ganador = "maquina";
+        }
+      }
+      else if (this.lugares[6] ==  this.lugares[7] && this.lugares[7] == this.lugares[8]) {
+        if (this.lugares[6] == this.usuario) {
+          ganador = "usuario";
+        }else{
+        ganador = "maquina";
+
+        }
+      }
+      else if (this.lugares[0] == this.lugares[3] &&  this.lugares[6] == this.lugares[3]) {
+        if (this.lugares[0] == this.usuario) {
+          ganador = "usuario";
+        }else{
+        ganador = "maquina";
+
+        }
+
+      }
+      else if (this.lugares[1] == this.lugares[4] &&  this.lugares[7] == this.lugares[4]) {
+        if (this.lugares[1] == this.usuario) {
+          ganador = "usuario";
+        }else{
+        ganador = "maquina";
+
+        }
+
+      }
+      else if (this.lugares[2] == this.lugares[5] &&  this.lugares[5] == this.lugares[8]) {
+        if (this.lugares[2] == this.usuario) {
+          ganador = "usuario";
+        }else{
+        ganador = "maquina";
+
+        }
+
+      }
+      else if (this.lugares[0] == this.lugares[4] &&  this.lugares[4] == this.lugares[8]) {
+        if (this.lugares[0] == this.usuario) {
+          ganador = "usuario";
+        }else{
+        ganador = "maquina";
+
+        }
+
+      }
+      else if (this.lugares[2] == this.lugares[4] &&  this.lugares[4] == this.lugares[6]) {
+        if (this.lugares[2] == this.usuario) {
+          ganador = "usuario";
+        }else{
+        ganador = "maquina";
+
+        }
+
+      }
+
+      return ganador;
       }
 }
