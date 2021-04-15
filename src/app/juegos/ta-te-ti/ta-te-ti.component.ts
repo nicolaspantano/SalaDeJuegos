@@ -57,16 +57,7 @@ export class TaTeTiComponent implements OnInit {
     
         if (this.nuevoJuego.resultado == "Gano" || this.nuevoJuego.resultado == "Perdio" || this.nuevoJuego.resultado == "Empate")
         {
-          this.band = true;
-          (<HTMLInputElement>document.getElementById("botonUno")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonDos")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonTres")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonCuatro")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonCinco")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonSeis")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonSiete")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonOcho")).disabled = true;
-          (<HTMLInputElement>document.getElementById("botonNueve")).disabled = true;
+          
           this.terminoJuego = false;
           /*this.servicio.getAuth().subscribe( user =>{
             let mail = user.email;      
@@ -93,16 +84,7 @@ export class TaTeTiComponent implements OnInit {
           if (this.nuevoJuego.resultado == "Gano" || this.nuevoJuego.resultado == "Perdio" || this.nuevoJuego.resultado == "Empate")
           {
             console.log(this.nuevoJuego.resultado);
-              this.band = true;
-              (<HTMLInputElement>document.getElementById("botonUno")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonDos")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonTres")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonCuatro")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonCinco")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonSeis")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonSiete")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonOcho")).disabled = true;
-              (<HTMLInputElement>document.getElementById("botonNueve")).disabled = true;
+
               this.terminoJuego = false;
               /*this.servicio.getAuth().subscribe( user =>{
                 let mail = user.email;      
@@ -147,6 +129,10 @@ export class TaTeTiComponent implements OnInit {
       }
 
       reiniciarJuego(){
+
+      }
+
+      comprobarGanador(){
 
       }
 }

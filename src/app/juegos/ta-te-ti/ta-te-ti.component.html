@@ -83,11 +83,13 @@
      
             <div style="padding: 10px;background:whitesmoke;margin-top: 5%">
               <div [hidden]="botonesEleccion">
-                <h4 style="color: black;">Seleccione su personaje favorito:</h4>
+                <h4 style="color: black;">Seleccione su simbolo:</h4>
                 <br>
                 <br>
-                <button mat-raised-button (click)="eleccionSigno('X')"><img src="assets/images/X.gif" border="0" name="rc9"></button>
-                <button mat-raised-button (click)="eleccionSigno('O')"><img src="assets/images/O.gif" border="0" name="rc9"></button>
+                <div class="row text-center">
+                    <div class="col-sm eleccion" id="divCero" (click)="eleccionSigno('X')" >X</div>
+                    <div class="col-sm eleccion" id="divUno" (click)="eleccionSigno('O')" >O</div>
+                </div>
               </div>
               <div [hidden]="botonesJuego">
                 <h4 style="color: black;">Comienza el juego</h4>
