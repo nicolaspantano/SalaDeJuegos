@@ -70,17 +70,18 @@
           </div>
           <div class="col-3"></div>
         </div>
+        <h4>Puntuacion: {{score}}</h4>
       </div>
 
-
-      <div *ngIf="estado=='2'">
+      
+      <div *ngIf="ganador" style="margin-top:20px">
         <div *ngIf="ganador=='jugador'">
-          Felicidades, adivino todos los numeros!
+          <h3>Felicidades, adivino todos los numeros!</h3>
         </div>
         <div *ngIf="ganador=='maquina'">
-
+          <h3>Lo siento, ha perdido!</h3>
         </div>
-
+        <button (click)="reiniciarJuego()" class="btn btn-jugar">Reiniciar Juego</button>
       </div>
 
 

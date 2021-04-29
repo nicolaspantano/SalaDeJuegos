@@ -12,19 +12,15 @@ export class MayormenorComponent implements OnInit {
   numerosRandom : Array<number> = [];
   numerosJugados : Array <number> = [];
   ganador = '';
+  score=0;
   constructor() { 
-    for(let i =0;i<9;i++){
-      let random = Math.floor(Math.random()*50);
-      this.numerosRandom.push(random);
-    }
-    console.log(this.numerosRandom);
+    
     
   }
 
   ngOnInit(): void {
-    let primero = this.numerosRandom.shift()||-1; 
-    this.numeroActual=primero;
-    this.numerosJugados.push(primero); 
+    this.reiniciarJuego();
+    console.log(this.numerosRandom);
     
   }
 
@@ -38,23 +34,23 @@ export class MayormenorComponent implements OnInit {
     
       if(numero>=0&&numero<=50){
         if(eleccion=="mayor"){
-          if(numero>this.numeroActual){
-            console.log("paso por aca 1");
+          if(numero>this.numeroActual){            
             this.numerosJugados.push(numero);
+            this.score++;
           }
           else{
-            console.log("paso por aca 2");
+            this.numerosJugados.push(numero)
             this.terminarJuego("maquina");
           }
         }
         
         if(eleccion=="menor"){
           if(numero<this.numeroActual){
-            console.log("paso por aca 3");
+            this.score++;
             this.numerosJugados.push(numero);
           }
           else{
-            console.log("paso por aca 4");
+            this.numerosJugados.push(numero)
             this.terminarJuego("maquina");
           }
         }
@@ -62,14 +58,14 @@ export class MayormenorComponent implements OnInit {
         
   
       }
-      else{
+      if(this.numerosRandom.length==0){
        this.terminarJuego("jugador");
         
       }
 
-      console.log("numeros random",this.numerosRandom);
+      
       this.numeroActual=numero;
-      console.log("numero actual",this.numeroActual);
+      
 
 
     }
@@ -81,6 +77,22 @@ export class MayormenorComponent implements OnInit {
     
     this.ganador=ganador;
     console.log("ganador", this.ganador);
+  }
+  
+
+  reiniciarJuego(){
+    this.numerosJugados=[];
+    for(let i =0;i<9;i++){
+      let random = Math.floor(Math.random()*50);
+      this.numerosRandom.push(random);
+    }
+    let primero = this.numerosRandom.shift()||-1; 
+    this.numeroActual=primero;
+    this.numerosJugados.push(primero); 
+    this.score=0;
+    this.ganador="";
+    console.log(this.numerosRandom);
+    
   }
 }
 
