@@ -22,23 +22,65 @@ export class MayormenorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.numerosJugados.push(this.numerosRandom.shift()||-1); 
+    let primero = this.numerosRandom.shift()||-1; 
+    this.numeroActual=primero;
+    this.numerosJugados.push(primero); 
+    
   }
 
 
   jugar(eleccion:string){
-    let numero = this.numerosRandom.shift()||-1;
-    if(numero>=0||numero<=50){
-      this.numerosJugados.push(this.numerosRandom.shift()||-1);
-      console.log(this.numerosJugados);
+
+    console.log("numero actual 1 ", this.numeroActual);
+    if(this.ganador==''){
+      let numero = this.numerosRandom.shift()||-1;
+
+    
+      if(numero>=0&&numero<=50){
+        if(eleccion=="mayor"){
+          if(numero>this.numeroActual){
+            console.log("paso por aca 1");
+            this.numerosJugados.push(numero);
+          }
+          else{
+            console.log("paso por aca 2");
+            this.terminarJuego("maquina");
+          }
+        }
+        
+        if(eleccion=="menor"){
+          if(numero<this.numeroActual){
+            console.log("paso por aca 3");
+            this.numerosJugados.push(numero);
+          }
+          else{
+            console.log("paso por aca 4");
+            this.terminarJuego("maquina");
+          }
+        }
+        
+        
+  
+      }
+      else{
+       this.terminarJuego("jugador");
+        
+      }
+
+      console.log("numeros random",this.numerosRandom);
+      this.numeroActual=numero;
+      console.log("numero actual",this.numeroActual);
+
+
     }
-    else{
-     this.estado="2";
-     console.log(numero);
-     this.ganador="jugador";
-      
-    }
+
    
+  }
+
+  terminarJuego(ganador:string){
+    
+    this.ganador=ganador;
+    console.log("ganador", this.ganador);
   }
 }
 
