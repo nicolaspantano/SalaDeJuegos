@@ -1,0 +1,20 @@
+.btn-jugar{
+    background-color: #673ab7;
+    color:white;
+}
+
+.botones{
+    margin-top:20px;
+}
+
+
+
+.columna{
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top:20px;
+}
+
+.numero{
+    font-size:65px;
+}

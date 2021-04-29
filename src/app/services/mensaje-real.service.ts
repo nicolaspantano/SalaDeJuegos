@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { AngularFireDatabase,AngularFireList } from '@angular/fire/database';
 import { } from '@angular/fire'
 import { Mensaje } from '../clases/mensaje';
@@ -7,7 +7,8 @@ import { Mensaje } from '../clases/mensaje';
 })
 export class MensajeRealService {
 
-  rutaColeccion : string ='/chat';
+  @Input() rutaColeccion : string ="/trash";
+  
   referenciaColeccion :  AngularFireList<Mensaje>;
   
   constructor(private db:AngularFireDatabase) {

@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
 import { PiedraPapelTijeraComponent } from './juegos/piedra-papel-tijera/piedra-papel-tijera.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { TaTeTiComponent } from './juegos/ta-te-ti/ta-te-ti.component';
+import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
 
 
 
@@ -36,7 +37,8 @@ import { TaTeTiComponent } from './juegos/ta-te-ti/ta-te-ti.component';
     RegisterComponent,
     PiedraPapelTijeraComponent,
     ChatComponent,
-    TaTeTiComponent
+    TaTeTiComponent,
+    MayormenorComponent
  
     
 

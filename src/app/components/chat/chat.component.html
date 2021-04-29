@@ -1,1 +1,7 @@
-<button (click)="Enviar()">asd</button> 
+<div class="container">
+    <div *ngFor="let mensaje of mensajes">
+        <div [ngClass]="{'actual': mensaje.usuario==usuarioActual,'otro':mensaje.usuario!=usuarioActual}">{{mensaje.mensaje}}</div>
+      
+        
+    </div>
+</div>

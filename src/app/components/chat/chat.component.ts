@@ -8,9 +8,11 @@ import { Mensaje } from '../../clases/mensaje';
 })
 export class ChatComponent implements OnInit {
   mensaje:Mensaje;
-
+  mensajes = new Array<Mensaje>();
+  usuarioActual=localStorage.getItem("user");
   constructor(private fireRealService:MensajeRealService) {
     this.mensaje= new Mensaje();
+    this.mensajes = [{id:'1',usuario:'prueba@hotmail.com',mensaje:'hola',estado:true},{id:'2',usuario:'prueba123@hotmail.com',mensaje:'chau',estado:true}]
    }
 
  

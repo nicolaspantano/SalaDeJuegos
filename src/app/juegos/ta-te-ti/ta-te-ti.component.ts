@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 
 import { JuegoTateti } from '../../clases/juego-ta-te-ti';
@@ -10,6 +11,7 @@ export class TaTeTiComponent implements OnInit {
 
   lugares = ['','','','','','','','',''];
 
+  
   turnoActual="usuario";
   random:any;
   nombreJugador : string ='';
@@ -19,8 +21,9 @@ export class TaTeTiComponent implements OnInit {
   ganador:string ='';
   usuario = "-";
   maquina = "-";
-  terminoJuego : boolean =false;
-  band : boolean =false;
+  divDisabled:boolean=false;
+  finJuego=false;
+  estado="0";
   
   constructor() {
     this.nuevoJuego = new JuegoTateti();
@@ -53,90 +56,62 @@ export class TaTeTiComponent implements OnInit {
   maquinamov()
   {
     
-        this.nuevoJuego.resultado = this.nuevoJuego.signo(this.usuario, "jugador");
+    var random = Math.floor(Math.random()*8);
+    console.log("random",random);
+    if(this.lugares[random]==''){
+      this.modificar(random);
+
+      
+      
+    }
+    else{
+      
+      this.maquinamov();
+
+    }
     
-        if (this.nuevoJuego.resultado == "Gano" || this.nuevoJuego.resultado == "Perdio" || this.nuevoJuego.resultado == "Empate")
-        {
-          
-          this.terminoJuego = false;
-          /*this.servicio.getAuth().subscribe( user =>{
-            let mail = user.email;      
-            let splitted = mail.split("@",1);
-            this.nuevoJuego.usuario = splitted[0];
-          });*/
-          //this.servicio.guardarPuntuaciónTateti(this.nuevoJuego);
-        }
-        else
-          this.jugar();
+    
+
     
   }
 
-  jugar() 
-      {
-        this.random = Math.floor(Math.random() * 8);
-        if (this.nuevoJuego.lugares[this.random] == "") {
-          this.nuevoJuego.lugares[this.random] = this.maquina;
-    
-          this.nuevoJuego.resultado = this.nuevoJuego.signo(this.maquina, "maquina");
-    
-          console.log(this.nuevoJuego.resultado);
-
-          if (this.nuevoJuego.resultado == "Gano" || this.nuevoJuego.resultado == "Perdio" || this.nuevoJuego.resultado == "Empate")
-          {
-            console.log(this.nuevoJuego.resultado);
-
-              this.terminoJuego = false;
-              /*this.servicio.getAuth().subscribe( user =>{
-                let mail = user.email;      
-                let splitted = mail.split("@",1);
-                this.nuevoJuego.usuario = splitted[0];
-              });
-              this.servicio.guardarPuntuaciónTateti(this.nuevoJuego);*/
-          }  
-        }
-        else {
-          this.jugar();
-        }
-      }
-
+  
       modificar(id:any){
-        /*if (this.nuevoJuego.lugares[id] == '-') {
-          this.nuevoJuego.lugares[id] = this.usuario;
-          
-          document.images[id].src = "assets/images/" + this.usuario + ".gif";
-          //document.images['rc' + id].alt = this.usuario;
-    
-          this.maquinamov();
-
-        }*/
-        if(this.lugares[id]==''){
+        
+        if(this.lugares[id]=='' && this.finJuego==false){
           if(this.turnoActual=='usuario'){
             this.lugares[id]=this.usuario;
             this.turnoActual='maquina';
-  
+            var vacios = this.lugares.filter(lugar => lugar == '');      
+            
+            if(vacios.length!=0) {
+              this.maquinamov();
+            }  
+                   
           }
           else{
             this.lugares[id]=this.maquina;
             this.turnoActual="usuario";
             
           }
-          this.maquinamov();
+          
         }
-        
-
-        
+        this.comprobarGanador();
         
       }
 
       reiniciarJuego(){
         this.lugares = ['','','','','','','','',''];
+        this.estado="0";
+        this.ganador="";
+        this.finJuego=false;
       }
 
       comprobarGanador(){
 
         let ganador;
 
-        if (this.lugares[0] == this.lugares[1] && this.lugares[1] == this.lugares[2]) {
+        if (this.lugares[0] == this.lugares[1] && this.lugares[1] == this.lugares[2] && this.lugares[0]!='') {
           if (this.lugares[0] == this.usuario) {
               ganador = "usuario";
           }else{
@@ -144,14 +119,14 @@ export class TaTeTiComponent implements OnInit {
           }
 
       }
-      else if (this.lugares[3] == this.lugares[4]   && this.lugares[4] == this.lugares[5]) {
+      else if (this.lugares[3] == this.lugares[4]   && this.lugares[4] == this.lugares[5]&& this.lugares[5]!='') {
         if (this.lugares[3] == this.usuario) {
           ganador = "usuario";
         }else{
         ganador = "maquina";
         }
       }
-      else if (this.lugares[6] ==  this.lugares[7] && this.lugares[7] == this.lugares[8]) {
+      else if (this.lugares[6] ==  this.lugares[7] && this.lugares[7] == this.lugares[8] && this.lugares[8]!='') {
         if (this.lugares[6] == this.usuario) {
           ganador = "usuario";
         }else{
@@ -159,7 +134,7 @@ export class TaTeTiComponent implements OnInit {
 
         }
       }
-      else if (this.lugares[0] == this.lugares[3] &&  this.lugares[6] == this.lugares[3]) {
+      else if (this.lugares[0] == this.lugares[3] &&  this.lugares[6] == this.lugares[3]&& this.lugares[3]!='') {
         if (this.lugares[0] == this.usuario) {
           ganador = "usuario";
         }else{
@@ -168,7 +143,7 @@ export class TaTeTiComponent implements OnInit {
         }
 
       }
-      else if (this.lugares[1] == this.lugares[4] &&  this.lugares[7] == this.lugares[4]) {
+      else if (this.lugares[1] == this.lugares[4] &&  this.lugares[7] == this.lugares[4]&& this.lugares[4]!='') {
         if (this.lugares[1] == this.usuario) {
           ganador = "usuario";
         }else{
@@ -177,7 +152,7 @@ export class TaTeTiComponent implements OnInit {
         }
 
       }
-      else if (this.lugares[2] == this.lugares[5] &&  this.lugares[5] == this.lugares[8]) {
+      else if (this.lugares[2] == this.lugares[5] &&  this.lugares[5] == this.lugares[8]&& this.lugares[5]!='') {
         if (this.lugares[2] == this.usuario) {
           ganador = "usuario";
         }else{
@@ -186,7 +161,7 @@ export class TaTeTiComponent implements OnInit {
         }
 
       }
-      else if (this.lugares[0] == this.lugares[4] &&  this.lugares[4] == this.lugares[8]) {
+      else if (this.lugares[0] == this.lugares[4] &&  this.lugares[4] == this.lugares[8]&& this.lugares[8]!='') {
         if (this.lugares[0] == this.usuario) {
           ganador = "usuario";
         }else{
@@ -195,7 +170,7 @@ export class TaTeTiComponent implements OnInit {
         }
 
       }
-      else if (this.lugares[2] == this.lugares[4] &&  this.lugares[4] == this.lugares[6]) {
+      else if (this.lugares[2] == this.lugares[4] &&  this.lugares[4] == this.lugares[6]&& this.lugares[6]!='') {
         if (this.lugares[2] == this.usuario) {
           ganador = "usuario";
         }else{
@@ -205,6 +180,25 @@ export class TaTeTiComponent implements OnInit {
 
       }
 
-      return ganador;
+      if(!ganador){
+        var vacios = this.lugares.filter(lugar => lugar == '');      
+            
+      
+        if(vacios.length==0) {
+          ganador="Empate"
+        } 
+      }
+      
+
+      if(ganador){
+        this.TerminarJuego(ganador);
+      }
+
+      
+    }
+
+      TerminarJuego(ganador:string){
+        this.ganador=ganador;
+        this.finJuego=true;
       }
 }
