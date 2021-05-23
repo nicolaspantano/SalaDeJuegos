@@ -20,11 +20,11 @@ export class LoginServiceService {
   }
 
   Login(user:Usuario){
-    this.firebase.col$('usuarios',(ref:any) => ref.where('email','==',user.email)).subscribe(res => {
+    this.firebase.col$('usuarios',(ref:any) => ref.where('correo','==',user.correo)).subscribe(res => {
       let usuario = <Usuario>res[0];
       if(usuario.password == user.password){
         localStorage.setItem('isLogged','true');
-        localStorage.setItem('user',user.email);
+        localStorage.setItem('user',user.correo);
         
         
         this.router.navigateByUrl('');

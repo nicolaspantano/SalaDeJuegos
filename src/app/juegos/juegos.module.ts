@@ -4,11 +4,12 @@ import { PiedraPapelTijeraComponent } from './piedra-papel-tijera/piedra-papel-t
 import { TaTeTiComponent } from './ta-te-ti/ta-te-ti.component';
 
 import { MayormenorComponent } from './mayormenor/mayormenor.component';
+import { MemotestComponent } from './memotest/memotest.component';
 
 
 
 @NgModule({
-  declarations: [PiedraPapelTijeraComponent, TaTeTiComponent, MayormenorComponent],
+  declarations: [PiedraPapelTijeraComponent, TaTeTiComponent, MayormenorComponent, MemotestComponent],
   imports: [
     CommonModule
   ]

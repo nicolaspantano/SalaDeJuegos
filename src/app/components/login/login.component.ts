@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   HardcodearUsuario(){
-    this.user.email='prueba@hotmail.com';
+    this.user.correo='prueba@hotmail.com';
     this.user.password='123456';
   }
 }

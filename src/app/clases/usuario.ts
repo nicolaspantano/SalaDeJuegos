@@ -1,4 +1,4 @@
 export class Usuario {
-    email:string='';
+    correo:string='';
     password:string='';
 }
