@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatCardModule} from '@angular/material/card';
 import { AngularFireModule } from '@angular/fire';
@@ -57,6 +57,8 @@ import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
     AngularFireModule.initializeApp(environment.firebase),
     MatButtonModule,
     CommonModule,
+    ReactiveFormsModule
+    
     
     
     

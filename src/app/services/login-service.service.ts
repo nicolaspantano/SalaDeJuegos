@@ -36,7 +36,7 @@ export class LoginServiceService {
   async Registrar(user:Usuario){
     
 
-    this.firebase.col$('usuarios',(ref:any) => ref.where('email','==',user.email)).subscribe(res => {
+    this.firebase.col$('usuarios',(ref:any) => ref.where('correo','==',user.correo)).subscribe(res => {
       let usuario = <Usuario>res[0];
       if(usuario){
           return false

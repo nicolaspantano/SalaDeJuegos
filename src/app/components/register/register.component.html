@@ -10,17 +10,22 @@
         </mat-card-header>
     
         <div class="form">
-          <mat-card-content>
-            <p>
-            <mat-form-field class="example-full-width">
-              <input type ="email" matInput placeholder="Email" [(ngModel)]='user.email'>
-            </mat-form-field>
-          </p>
-            <mat-form-field class="example-full-width">
-              <input type="password" matInput placeholder="Password" [(ngModel)]='user.password'>
-            </mat-form-field>
-          </mat-card-content>
-          <button mat-stroked-button color="primary" class="btn-block" (click)='Registrar()'>Registrarse</button>
+          <form novalidate (ngSubmit)="Registrar()" [formGroup]="form">
+            <fieldset>
+              <mat-card-content>
+                <p>
+                <mat-form-field class="example-full-width">
+                  <input type ="email" matInput placeholder="Email" [(ngModel)]='user.correo'  id="correo" formControlName="correo" [class]="isValid('correo')">
+                </mat-form-field>
+              </p>
+                <mat-form-field class="example-full-width">
+                  <input type="password" matInput placeholder="Password" [(ngModel)]='user.password' id="password" formControlName="password" [class]="isValid('password')">
+                </mat-form-field>
+              </mat-card-content>
+              <button mat-stroked-button color="primary" class="btn-block" type="submit" [disabled]="form.invalid">Registrarse</button>
+            </fieldset>
+          </form>
+          
           
         </div>
       </mat-card>
