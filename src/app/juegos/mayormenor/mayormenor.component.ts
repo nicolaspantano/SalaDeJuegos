@@ -84,6 +84,9 @@ export class MayormenorComponent implements OnInit {
     this.numerosJugados=[];
     for(let i =0;i<9;i++){
       let random = Math.floor(Math.random()*50);
+      while(this.numerosRandom.some(res => res == random)){
+        random = Math.floor(Math.random()*50);
+      }
       this.numerosRandom.push(random);
     }
     let primero = this.numerosRandom.shift()||-1; 

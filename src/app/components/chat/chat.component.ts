@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild,AfterViewInit,ViewChildren,QueryList,ElementRef } from '@angular/core';
 import { MensajeRealService } from '../../services/mensaje-real.service';
 import { Mensaje } from '../../clases/mensaje';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -12,7 +14,7 @@ export class ChatComponent implements OnInit {
   usuarioActual=localStorage.getItem("user");
   constructor(private fireRealService:MensajeRealService) {
     this.mensaje= new Mensaje();
-    this.mensajes = [{id:'1',usuario:'prueba@hotmail.com',mensaje:'hola',estado:true},{id:'2',usuario:'prueba123@hotmail.com',mensaje:'chau',estado:true}]
+    this.mensajes = [];
    }
 
  
