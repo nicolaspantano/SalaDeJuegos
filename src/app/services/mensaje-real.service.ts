@@ -18,13 +18,14 @@ export class MensajeRealService {
     this.referenciaColeccion = this.db.list(ruta);
     
    }
-   Crear(mensaje:Mensaje):any
+   Crear(mensaje:Mensaje,ruta:string):any
    {
-     return this.referenciaColeccion.push(mensaje);
+     //return this.referenciaColeccion.push(mensaje);
+     return this.db.list(ruta).push(mensaje);
    }
  
-   ObtenerTodos():AngularFireList<Mensaje>
+   ObtenerTodos(ruta:string):any
    {
-     return this.referenciaColeccion;
+     return this.db.list(ruta);
    }
 }

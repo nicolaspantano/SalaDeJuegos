@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
+import { ChatComponent } from '../components/chat/chat.component';
 
 
 
@@ -18,7 +19,8 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [PiedraPapelTijeraComponent, TaTeTiComponent, MayormenorComponent, MemotestComponent],
   imports: [
     CommonModule,
-    BrowserModule
+    BrowserModule,
+    ChatComponent
   ]
 })
 export class JuegosModule { }

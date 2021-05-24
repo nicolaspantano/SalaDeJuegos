@@ -9,28 +9,57 @@ import { Router } from '@angular/router';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+  @ViewChild('scrollframe',{static:false}) scrollframe: ElementRef;
+  @ViewChildren('item') itemElements:QueryList<any>;
+  @Input() ruta:string;
   mensaje:Mensaje;
   mensajes = new Array<Mensaje>();
-  usuarioActual=localStorage.getItem("user");
-  constructor(private fireRealService:MensajeRealService) {
+
+  item$:Observable<any[]>;
+  token:any;
+
+  date = new Date();
+
+  private scrollContainer:any;
+
+  usuarioActual=localStorage.getItem("token");
+  constructor(private mensajeSvc:MensajeRealService,private router:Router) {
     this.mensaje= new Mensaje();
-    this.mensajes = [];
+    this.item$ = this.mensajeSvc.ObtenerTodos(this.ruta).valueChanges();
+    this.mensaje.usuario=localStorage.getItem('token');
+    this.mensaje.hora = this.date.getHours() + ':' + this.date.getMinutes();
    }
 
  
 
   ngOnInit(): void {
-    
+    this.token = localStorage.getItem('token');
+
   }
 
   Enviar(){
-    this.fireRealService.TraerTodos();
-    /*
-    this.mensaje.usuario=localStorage.getItem('user') || '';
+    this.mensajeSvc.Crear(this.mensaje,this.ruta).then(()=>{
+      this.mensaje.mensaje='';
+    })
+  }
 
-    //Mensaje Real Service
-    this.fireRealService.CrearUno(this.mensaje).then(()=>{
-      console.log("Se envio el mensaje real");
+  ngAfterViewInit() {
+    //this.scrollContainer = this.scrollframe.nativeElement;  
+    //this.itemElements.changes.subscribe(_ => this.onItemElementsChanged());    
+  }
+
+  private onItemElementsChanged(): void {
+    //this.scrollToBottom();
+  }
+
+  private scrollToBottom(): void {
+    /*this.scrollContainer.scroll({
+      top: this.scrollContainer.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
     });*/
   }
+
+
+  
 }
