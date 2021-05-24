@@ -22,6 +22,9 @@ import { PiedraPapelTijeraComponent } from './juegos/piedra-papel-tijera/piedra-
 import { ChatComponent } from './components/chat/chat.component';
 import { TaTeTiComponent } from './juegos/ta-te-ti/ta-te-ti.component';
 import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MemotestComponent } from './juegos/memotest/memotest.component';
+
 
 
 
@@ -38,10 +41,8 @@ import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
     PiedraPapelTijeraComponent,
     ChatComponent,
     TaTeTiComponent,
-    MayormenorComponent
- 
-    
-
+    MayormenorComponent,
+    MemotestComponent
 
   ],
   imports: [
@@ -57,10 +58,8 @@ import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
     AngularFireModule.initializeApp(environment.firebase),
     MatButtonModule,
     CommonModule,
-    ReactiveFormsModule
-    
-    
-    
+    ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [],

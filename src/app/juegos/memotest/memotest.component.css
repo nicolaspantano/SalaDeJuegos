@@ -1,0 +1,36 @@
+.container{
+    margin-top: 5%;
+}
+
+table {
+    border: 20px solid #673ab7;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+td {
+    border: 3px solid black;
+    width: 5em;
+    height: 5em;
+    padding: 5px;
+}
+
+.icon {
+    font-size: 7em;
+}
+
+.iconCircle {
+    font-size: 5em;
+    color: rgb(31, 21, 161);
+}
+
+img {
+height: 50px;
+max-width: 80px;
+}
+
+.btn-jugar{
+    background-color: #673ab7;
+    color:white;
+}

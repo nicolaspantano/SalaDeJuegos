@@ -1,14 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
+import { Pais } from '../clases/pais'
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PaisesService {
+export class PaisesServiceService {
 
-  public url;
+  private url="https://restcountries.eu/rest/v2/region/americas"
+  paises : Pais[] = [];
+  constructor(private http:HttpClient) { }
 
-  constructor(public http:HttpClient) {
-    this.url="https://restcountries.eu/rest/v2/region/americas";
-   }
+  getAllPaises(){
+    return this.http.get(this.url);
+  }
+
+  crearArrDePaises(paisesObj: Object) {
+    const paises: Pais[] = [];
+
+    if (paisesObj === null)
+        return [];
+
+    Object.keys(paisesObj).forEach(key => {
+        const pais: Pais = paisesObj[key];
+        pais.id = key;
+
+        paises.push(pais);
+    })
+
+    return paises;
+}
 }
