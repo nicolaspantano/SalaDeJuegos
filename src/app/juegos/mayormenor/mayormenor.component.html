@@ -1,27 +1,43 @@
-<div class="container" style="text-align: center;" id="divPrincipal">
-     
-    <div style="padding: 10px;margin-top: 5%">
+<div class="container" style="text-align: center" id="divPrincipal">
+  <div class="row">
+    <div class="col-8">
       <h1>Mayor o menor?</h1>
 
-      <div *ngIf="estado=='0'">
-      <p> El juego de Mayor o Menor consiste en 9 numeros del 0 al 50 generados aleatoriamente que estan ocultos. El jugador debe adivinar si el proximo numero es mayor o menor al actual. En caso de acertar, sigue jugando.</p>
-      <button class="btn btn-jugar" (click)="estado = '1'">Jugar</button>
+      <div *ngIf="estado == '0'">
+        <p>
+          El juego de Mayor o Menor consiste en 9 numeros del 0 al 50 generados
+          aleatoriamente que estan ocultos. El jugador debe adivinar si el
+          proximo numero es mayor o menor al actual. En caso de acertar, sigue
+          jugando.
+        </p>
+        <button class="btn btn-jugar" (click)="estado = '1'">Jugar</button>
       </div>
 
-      <div class="numeros" *ngIf="estado=='1'">
-
+      <div class="numeros" *ngIf="estado == '1'">
         <div class="row">
           <div class="col-3"></div>
           <div class="col-2 columna">
-            <span class="numero">{{numerosJugados[0]}}</span>
+            <span class="numero">{{ numerosJugados[0] }}</span>
           </div>
           <div class="col-2 columna">
-            <img *ngIf="numerosJugados[1]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[1]!=null" class="numero">{{numerosJugados[1]}}</span>
+            <img
+              *ngIf="numerosJugados[1] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[1] != null" class="numero">{{
+              numerosJugados[1]
+            }}</span>
           </div>
           <div class="col-2 columna">
-            <img *ngIf="numerosJugados[2]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[2]!=null" class="numero">{{numerosJugados[2]}}</span>
+            <img
+              *ngIf="numerosJugados[2] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[2] != null" class="numero">{{
+              numerosJugados[2]
+            }}</span>
           </div>
           <div class="col-3"></div>
         </div>
@@ -29,16 +45,34 @@
         <div class="row">
           <div class="col-3"></div>
           <div class="col-2 columna">
-            <img *ngIf="numerosJugados[3]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[3]!=null" class="numero">{{numerosJugados[3]}}</span>
-          </div>
-          <div class="col-2 columna ">
-            <img *ngIf="numerosJugados[4]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[4]!=null" class="numero">{{numerosJugados[4]}}</span>
+            <img
+              *ngIf="numerosJugados[3] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[3] != null" class="numero">{{
+              numerosJugados[3]
+            }}</span>
           </div>
           <div class="col-2 columna">
-            <img *ngIf="numerosJugados[5]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[5]!=null" class="numero">{{numerosJugados[5]}}</span>
+            <img
+              *ngIf="numerosJugados[4] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[4] != null" class="numero">{{
+              numerosJugados[4]
+            }}</span>
+          </div>
+          <div class="col-2 columna">
+            <img
+              *ngIf="numerosJugados[5] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[5] != null" class="numero">{{
+              numerosJugados[5]
+            }}</span>
           </div>
           <div class="col-3"></div>
         </div>
@@ -46,44 +80,80 @@
         <div class="row">
           <div class="col-3"></div>
           <div class="col-2 columna">
-            <img *ngIf="numerosJugados[6]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[6]!=null" class="numero">{{numerosJugados[6]}}</span>
+            <img
+              *ngIf="numerosJugados[6] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[6] != null" class="numero">{{
+              numerosJugados[6]
+            }}</span>
           </div>
           <div class="col-2 columna">
-            <img *ngIf="numerosJugados[7]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[7]!=null" class="numero">{{numerosJugados[7]}}</span>
+            <img
+              *ngIf="numerosJugados[7] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[7] != null" class="numero">{{
+              numerosJugados[7]
+            }}</span>
           </div>
           <div class="col-2 columna">
-            <img *ngIf="numerosJugados[8]==null" class="numeroOculto" src="../../../assets/numeroOculto.jpg">
-            <span *ngIf="numerosJugados[8]!=null" class="numero">{{numerosJugados[8 ]}}</span>
+            <img
+              *ngIf="numerosJugados[8] == null"
+              class="numeroOculto"
+              src="../../../assets/numeroOculto.jpg"
+            />
+            <span *ngIf="numerosJugados[8] != null" class="numero">{{
+              numerosJugados[8]
+            }}</span>
           </div>
           <div class="col-3"></div>
         </div>
 
         <div class="row botones">
           <div class="col-3"></div>
-          <div class="col-3 ">
-            <button class="btn btn-jugar" (click)="jugar('menor')">Menor</button>
+          <div class="col-3">
+            <button class="btn btn-jugar" (click)="jugar('menor')">
+              Menor
+            </button>
           </div>
           <div class="col-3">
-            <button class="btn btn-jugar" (click)="jugar('mayor')">Mayor</button>
+            <button class="btn btn-jugar" (click)="jugar('mayor')">
+              Mayor
+            </button>
           </div>
           <div class="col-3"></div>
         </div>
-        <h4 style="margin-top: 15px;">Puntuacion: {{score}}/8</h4>
+        <h4 style="margin-top: 15px">Puntuacion: {{ score }}/8</h4>
+
+        <div *ngIf="ganador" style="margin-top: 20px">
+          <div *ngIf="ganador == 'jugador'">
+            <h3>Felicidades, adivino todos los numeros!</h3>
+          </div>
+          <div *ngIf="ganador == 'maquina'">
+            <h3>Lo siento, ha perdido!</h3>
+          </div>
+          <p><button (click)="reiniciarJuego()" class="btn btn-jugar">
+            Reiniciar Juego
+          </button></p>
+          <button (click)="estado = '2'" class="btn btn-jugar">Constestar encuesta</button>
+        </div>
       </div>
 
+      <div *ngIf="estado == '2'">
+        <p><app-encuesta></app-encuesta></p>
+        <button (click)="reiniciarJuego()" class="btn btn-jugar">
+          Reiniciar Juego
+        </button>
+      </div>
       
-      <div *ngIf="ganador" style="margin-top:20px">
-        <div *ngIf="ganador=='jugador'">
-          <h3>Felicidades, adivino todos los numeros!</h3>
-        </div>
-        <div *ngIf="ganador=='maquina'">
-          <h3>Lo siento, ha perdido!</h3>
-        </div>
-        <button (click)="reiniciarJuego()" class="btn btn-jugar">Reiniciar Juego</button>
-      </div>
-
-
-     </div>
+    </div>
+    <div class="col-4">
+      
+      <p><app-mayormenorchat></app-mayormenorchat></p>
+      <app-score [juego]="nombre"></app-score>
+    </div>
   </div>
+</div>

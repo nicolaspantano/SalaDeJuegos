@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Pais } from 'src/app/clases/pais';
+import { Score } from 'src/app/clases/score';
 import { PaisesServiceService } from 'src/app/services/paises.service';
+import { ScoreService } from 'src/app/services/score.service';
 
 @Component({
   selector: 'app-memotest',
@@ -19,7 +21,9 @@ export class MemotestComponent implements OnInit {
   public ganador;
   public resultado;
   public mensaje;
-
+  public movimientos =0;
+  public score:Score = new Score();
+  public date = new Date();
   elementos = [
     { iconSrc: 'heart', seleccionada: false },
     { iconSrc: 'car', seleccionada: false },
@@ -39,7 +43,11 @@ export class MemotestComponent implements OnInit {
     { iconSrc: 'bolt', seleccionada: false }
   ];
 
-  constructor(private paisesSrvc:PaisesServiceService) { }
+  constructor(private paisesSrvc:PaisesServiceService, private scoreSvc:ScoreService) {
+    this.score.name=localStorage.getItem('token');
+    this.score.juego="memotest";
+    this.score.fecha=this.date.getDate().toString() + '/' + this.date.getMonth().toString();
+   }
 
   ngOnInit(): void {
     this.paisesSrvc.getAllPaises()
@@ -90,6 +98,7 @@ export class MemotestComponent implements OnInit {
         }, 1000);
 
       }
+      this.movimientos++;
       // evaluo si ya gano
       // tslint:disable-next-line:prefer-for-of
       for (let index = 0; index < this.grilla.length; index++) {
@@ -100,6 +109,8 @@ export class MemotestComponent implements OnInit {
           return;
         }
       }
+      this.score.score=this.movimientos.toString() + ' turnos';
+      this.scoreSvc.Crear(this.score);
       this.ganador = "jugador";
       this.puntaje = 10;
       this.mensaje = 'GANASTE!!!';
@@ -112,7 +123,8 @@ export class MemotestComponent implements OnInit {
     })
     this.iniciarGrilla();
     this.ganador="";
-    
+    this.estado='1';
+    this.movimientos=0;
   }
 
 

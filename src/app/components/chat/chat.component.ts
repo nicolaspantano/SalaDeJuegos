@@ -25,7 +25,7 @@ export class ChatComponent implements OnInit {
   usuarioActual=localStorage.getItem("token");
   constructor(private mensajeSvc:MensajeRealService,private router:Router) {
     this.mensaje= new Mensaje();
-    this.item$ = this.mensajeSvc.ObtenerTodos(this.ruta).valueChanges();
+    this.item$ = this.mensajeSvc.ObtenerTodos().valueChanges();
     this.mensaje.usuario=localStorage.getItem('token');
     this.mensaje.hora = this.date.getHours() + ':' + this.date.getMinutes();
    }
@@ -38,26 +38,26 @@ export class ChatComponent implements OnInit {
   }
 
   Enviar(){
-    this.mensajeSvc.Crear(this.mensaje,this.ruta).then(()=>{
+    this.mensajeSvc.Crear(this.mensaje).then(()=>{
       this.mensaje.mensaje='';
     })
   }
 
   ngAfterViewInit() {
-    //this.scrollContainer = this.scrollframe.nativeElement;  
-    //this.itemElements.changes.subscribe(_ => this.onItemElementsChanged());    
+    this.scrollContainer = this.scrollframe.nativeElement;  
+    this.itemElements.changes.subscribe(_ => this.onItemElementsChanged());    
   }
 
   private onItemElementsChanged(): void {
-    //this.scrollToBottom();
+    this.scrollToBottom();
   }
 
   private scrollToBottom(): void {
-    /*this.scrollContainer.scroll({
+    this.scrollContainer.scroll({
       top: this.scrollContainer.scrollHeight,
       left: 0,
       behavior: 'smooth'
-    });*/
+    });
   }
 
 

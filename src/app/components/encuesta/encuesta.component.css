@@ -1,0 +1,16 @@
+.radioGroupBelow label {
+    display: inline-block;
+    text-align: center;
+    margin: 0 0.2em;
+  }
+  .radioGroupBelow label input[type="radio"] {
+    display: block;
+    margin: 0.5em auto;
+  }
+
+.btn{
+    background-color: #673ab7;
+    color:white !important;
+}
+
+

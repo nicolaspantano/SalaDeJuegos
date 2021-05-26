@@ -13,6 +13,10 @@ export class AppComponent {
       console.log(this.router.url);
   }
 
+  logout(){
+   localStorage.clear();
+   this.router.navigateByUrl('/login');
+  }
   
 }
 

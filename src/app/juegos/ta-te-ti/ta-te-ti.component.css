@@ -1,4 +1,9 @@
 
+.container{
+    align-items: center;
+    width: 100%;
+    margin-top:5%;
+}
 
 .board, .eleccion {
     width: 70px;

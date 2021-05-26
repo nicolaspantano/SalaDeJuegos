@@ -1,11 +1,11 @@
-
-<div>
+<div class="container">
+  <div class="row">
       
-    <div>
+    <div class="col-8">
 
-        <div class="container" style="text-align: center;" id="divPrincipal">
+        <div class="text-center"  id="divPrincipal">
      
-            <div style="padding: 10px;margin-top: 5%">
+            <div>
               <h1>Ta Te Ti</h1>
               
               <div class="text-center"*ngIf='estado=="0"'>
@@ -64,11 +64,32 @@
               <div *ngIf="ganador=='maquina'">
                 <h3> Lo siento, perdiste!</h3>
               </div>
-              <button class="btn btn-jugar" (click)="reiniciarJuego() ">Volver a jugar</button>
+              <p><button class="btn btn-jugar" (click)="reiniciarJuego() ">Volver a jugar</button></p>
+              <button class="btn btn-jugar" (click)="estado = '2'">Contestar encuesta</button>
+
             </div>
+          </div>
+
+          <div *ngIf="estado == '2'">
+            <p><app-encuesta></app-encuesta></p>
+            <button class="btn btn-jugar" (click)="reiniciarJuego() ">Volver a jugar</button>
+
           </div>
             
 
 
 
     </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-4">
+    <p><app-tatetichat></app-tatetichat></p>
+    <app-score juego="tateti"></app-score>
+  </div>
+
+</div>
+
+  </div>

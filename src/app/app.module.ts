@@ -24,6 +24,12 @@ import { TaTeTiComponent } from './juegos/ta-te-ti/ta-te-ti.component';
 import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MemotestComponent } from './juegos/memotest/memotest.component';
+import { PptchatComponent } from './components/pptchat/pptchat.component';
+import { TatetichatComponent } from './components/tatetichat/tatetichat.component';
+import { MemotestchatComponent } from './components/memotestchat/memotestchat.component';
+import { MayormenorchatComponent } from './components/mayormenorchat/mayormenorchat.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { ScoreComponent } from './components/score/score.component';
 
 
 
@@ -42,7 +48,13 @@ import { MemotestComponent } from './juegos/memotest/memotest.component';
     ChatComponent,
     TaTeTiComponent,
     MayormenorComponent,
-    MemotestComponent
+    MemotestComponent,
+    PptchatComponent,
+    TatetichatComponent,
+    MemotestchatComponent,
+    MayormenorchatComponent,
+    EncuestaComponent,
+    ScoreComponent
 
   ],
   imports: [

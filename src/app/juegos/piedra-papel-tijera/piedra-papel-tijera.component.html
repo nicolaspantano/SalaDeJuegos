@@ -1,6 +1,6 @@
 <div class="container text-center">
   <div class="row">
-    <div class="col-12">
+    <div class="col-8">
       <h1>Piedra papel o tijera</h1>
       <p style="padding-bottom: 30px  ;">Piedra, papel o tijera es un juego infantil, un juego de manos en el que existen tres elementos: la piedra que vence a la tijera rompiéndola, la tijera que vence al papel cortándolo y el papel que vence a la piedra envolviéndola</p>
       
@@ -45,22 +45,26 @@
           </div>
         </div>
   
+        <p><button class="btn btn-jugar" (click)="estado = '1'">Volver a jugar</button></p>
+        <button class="btn btn-jugar" (click)="estado = '3'">Responder encuesta</button>
+
+      </div>
+      
+      <div *ngIf="estado=='3'">
+        <p><app-encuesta></app-encuesta></p>
         <button class="btn btn-jugar" (click)="estado = '1'">Volver a jugar</button>
+
       </div>
   
     </div>
-    <!--<div class="col-4">
-      <app-chat></app-chat>
-    </div>-->
-    
     <div class="col-4">
-      <app-chat ruta="ppt"></app-chat>
+      <p><app-pptchat></app-pptchat></p>
+      <app-score juego="ppt"></app-score>
     </div>
     
+    
+    
   </div>
     
-   
-
-
-
   </div>
+

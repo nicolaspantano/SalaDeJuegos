@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Score } from 'src/app/clases/score';
+import { ScoreService } from 'src/app/services/score.service';
 
 @Component({
   selector: 'app-mayormenor',
@@ -7,15 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MayormenorComponent implements OnInit {
 
+  nombre="mayormenor";
   estado="0";
   numeroActual = -1;
   numerosRandom : Array<number> = [];
   numerosJugados : Array <number> = [];
   ganador = '';
   score=0;
-  constructor() { 
+  date = new Date();
+  puntuacion:Score = new Score();
+  constructor(private scoreSvc:ScoreService) { 
     
-    
+    this.puntuacion.juego="mayormenor";
+    this.puntuacion.name=localStorage.getItem('token');
+    this.puntuacion.fecha = this.date.getDate().toString() + '/' + this.date.getMonth().toString();
   }
 
   ngOnInit(): void {
@@ -76,7 +83,10 @@ export class MayormenorComponent implements OnInit {
   terminarJuego(ganador:string){
     
     this.ganador=ganador;
+    this.puntuacion.score=this.score.toString();
+    this.scoreSvc.Crear(this.puntuacion);
     console.log("ganador", this.ganador);
+   
   }
   
 

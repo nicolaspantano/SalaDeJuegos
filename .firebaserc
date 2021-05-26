@@ -7,5 +7,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "default": "sala-de-juegos-8bb74"
   }
 }

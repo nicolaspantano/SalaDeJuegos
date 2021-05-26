@@ -1,0 +1,25 @@
+.box-user{
+    background-color: #673ab7;
+    color: #FFF;
+    margin: 2%;
+    position: relative;
+    border: 4px solid #673ab7;
+    padding: 2%;
+    border-radius: 5px;
+    text-align: right;
+}
+
+.box-gray {
+    margin: 2%;
+    position: relative;
+    color: black;
+    /*font-weight: bold;*/
+    background: #EEEEEE;
+    border: 4px solid #EEEEEE;
+    padding: 2%;
+    border-radius: 5px;
+    text-align: left;
+  }
+  .desc{
+      font-size:80%;
+  }

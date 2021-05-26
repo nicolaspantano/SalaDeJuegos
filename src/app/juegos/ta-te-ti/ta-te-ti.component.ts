@@ -1,5 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Score } from 'src/app/clases/score';
+import { ScoreService } from 'src/app/services/score.service';
 
 import { JuegoTateti } from '../../clases/juego-ta-te-ti';
 @Component({
@@ -24,9 +26,15 @@ export class TaTeTiComponent implements OnInit {
   divDisabled:boolean=false;
   finJuego=false;
   estado="0";
+
+  score:Score = new Score();
+  date:Date = new Date();
   
-  constructor() {
+  constructor(private scoreSvc:ScoreService) {
     this.nuevoJuego = new JuegoTateti();
+    this.score.juego="tateti";
+    this.score.name=localStorage.getItem('token');
+    this.score.fecha = this.date.getDate().toString() + '/' + this.date.getMonth().toString();
    }
 
   ngOnInit(): void {
@@ -191,6 +199,16 @@ export class TaTeTiComponent implements OnInit {
       
 
       if(ganador){
+        if(ganador=="maquina"){
+          this.score.score="Derrota";
+        }
+        else if(ganador == "usuario"){
+          this.score.score="Victoria";
+        }
+        else{
+          this.score.score="Empate";
+        }
+        
         this.TerminarJuego(ganador);
       }
 
@@ -200,5 +218,10 @@ export class TaTeTiComponent implements OnInit {
       TerminarJuego(ganador:string){
         this.ganador=ganador;
         this.finJuego=true;
+        this.scoreSvc.Crear(this.score);
+        this.score=new Score();
+        this.score.juego="tateti";
+        this.score.name=localStorage.getItem('token');
+        this.score.fecha = this.date.getDate().toString() + '/' + this.date.getMonth().toString();
       }
 }

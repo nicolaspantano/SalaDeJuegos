@@ -1,116 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+  <h1 class="text-center">Memotest</h1>
+  <div class="text-center" *ngIf="estado == '0'">
+    <p style="padding-bottom: 30px">
+      Memotest o juego de la memoria es un juego de mesa que consiste en
+      encontrar los pares con la misma figura impresa utilizando la memoria, en
+      esta ocasion, utilizaremos paises de America.
+    </p>
+  </div>
 
-<div class="container ">
-    <h1 class="text-center">Memotest</h1>
-    <div class="text-center" *ngIf="estado=='0'">
-        
-        <p  style="padding-bottom: 30px  ;">Memotest o juego de la memoria es un juego de mesa que consiste en encontrar los pares con la misma figura impresa utilizando la memoria, en esta ocasion, utilizaremos paises de America.</p>    
-    </div>
+  <div class="text-center" *ngIf="estado == '0'">
+    <button class="btn btn-jugar" (click)="estado = '1'">Jugar</button>
+  </div>
+  <div *ngIf="estado == '1'">
+  <table >
+    <tr *ngFor="let fila of grilla">
+      <td *ngFor="let columna of fila" (click)="elegirCelda(columna)">
+        <i *ngIf="columna.iconSrc == 'heart' && columna.seleccionada">
+          <img src="{{ paises[3].flag }}" alt="" srcset="" />
+        </i>
+        <i *ngIf="columna.iconSrc == 'car' && columna.seleccionada">
+          <img src="{{ paises[6].flag }}" alt="" srcset="" />
+        </i>
+        <i *ngIf="columna.iconSrc == 'apple' && columna.seleccionada">
+          <img src="{{ paises[5].flag }}" alt="" srcset="" />
+        </i>
+        <i *ngIf="columna.iconSrc == 'bell' && columna.seleccionada">
+          <img src="{{ paises[0].flag }}" alt="" srcset="" />
+        </i>
+        <i *ngIf="columna.iconSrc == 'bicycle' && columna.seleccionada">
+          <img src="{{ paises[1].flag }}" alt="" srcset="" />
+        </i>
+        <i *ngIf="columna.iconSrc == 'bomb' && columna.seleccionada">
+          <img src="{{ paises[2].flag }}" alt="" srcset="" />
+        </i>
+        <i *ngIf="columna.iconSrc == 'bolt' && columna.seleccionada">
+          <img src="{{ paises[4].flag }}" alt="" srcset="" />
+        </i>
+        <i *ngIf="columna.iconSrc == 'book' && columna.seleccionada">
+          <img src="{{ paises[7].flag }}" alt="" srcset="" />
+        </i>
+        <i class="fa fa-circle icon" *ngIf="!columna.seleccionada"></i>
+      </td>
+    </tr>
+  </table>
 
-    <div class="text-center"*ngIf='estado=="0"'>
-        <button class="btn btn-jugar" (click)="estado = '1'">Jugar</button>
-      </div>
-    <table *ngIf="estado=='1'">
-        <tr *ngFor="let fila of grilla">
-            <td *ngFor="let columna of fila" (click)="elegirCelda(columna)">
+  <div *ngIf="ganador" class="text-center">
+    <h3>Felicidades, ganaste!</h3>
+    <p><button class="btn btn-jugar" (click)="reiniciarJuego()">
+      Volver a jugar
+    </button></p>
+    <button class="btn btn-jugar" (click)="estado = '2'">Contestar encuesta</button>
+  </div>
 
-
-                
-                
-                <i *ngIf="columna.iconSrc == 'heart' && columna.seleccionada">
-                    <img src='{{ paises[3].flag }}' alt="" srcset="" >
-                </i>
-                <i *ngIf="columna.iconSrc == 'car' && columna.seleccionada">
-                    <img src='{{ paises[6].flag }}' alt="" srcset="">
-                </i>
-                <i *ngIf="columna.iconSrc == 'apple' && columna.seleccionada">
-                    <img src='{{ paises[5].flag }}' alt="" srcset="">
-                </i>
-                <i *ngIf="columna.iconSrc == 'bell' && columna.seleccionada">
-                    <img src='{{ paises[0].flag }}' alt="" srcset="">
-                </i>
-                <i *ngIf="columna.iconSrc == 'bicycle' && columna.seleccionada">
-                    <img src='{{ paises[1].flag }}' alt="" srcset="">
-                </i>
-                <i *ngIf="columna.iconSrc == 'bomb' && columna.seleccionada">
-                    <img src='{{ paises[2].flag }}' alt="" srcset="">
-                </i>
-                <i *ngIf="columna.iconSrc == 'bolt' && columna.seleccionada">
-                    <img src='{{ paises[4].flag }}' alt="" srcset="">
-                </i>
-                <i *ngIf="columna.iconSrc == 'book' && columna.seleccionada">
-                    <img src='{{ paises[7].flag }}' alt="" srcset="">
-                </i>
-                <i class="fa fa-circle icon" *ngIf="!columna.seleccionada"></i>
-            
-
-            </td>
-        </tr>
-    </table>
-
-    <div *ngIf="ganador" class="text-center">    
-          <h3>Felicidades, ganaste!</h3>
-        <button class="btn btn-jugar" (click)="reiniciarJuego() ">Volver a jugar</button>
-      </div>
 </div>
-<!--
-<mat-card-content>
-    
-    <mat-grid-list cols="2" rowHeight="2:1" class="list">
 
-
-    </mat-grid-list>
-
-    <div class="content">
-      <mat-card>
-        <mat-card-content>
-            <div class="container p-3">
-
-                <table>
-                    <tr *ngFor="let fila of grilla">
-                        <td *ngFor="let columna of fila" (click)="elegirCelda(columna)">
-            
-                            <i *ngIf="columna.iconSrc == 'heart' && columna.seleccionada">
-                                <img src='{{ paises[3].flag }}' alt="" srcset="">
-                            </i>
-                            <i *ngIf="columna.iconSrc == 'car' && columna.seleccionada">
-                                <img src='{{ paises[6].flag }}' alt="" srcset="">
-                            </i>
-                            <i *ngIf="columna.iconSrc == 'apple' && columna.seleccionada">
-                                <img src='{{ paises[5].flag }}' alt="" srcset="">
-                            </i>
-                            <i *ngIf="columna.iconSrc == 'bell' && columna.seleccionada">
-                                <img src='{{ paises[0].flag }}' alt="" srcset="">
-                            </i>
-                            <i *ngIf="columna.iconSrc == 'bicycle' && columna.seleccionada">
-                                <img src='{{ paises[1].flag }}' alt="" srcset="">
-                            </i>
-                            <i *ngIf="columna.iconSrc == 'bomb' && columna.seleccionada">
-                                <img src='{{ paises[2].flag }}' alt="" srcset="">
-                            </i>
-                            <i *ngIf="columna.iconSrc == 'bolt' && columna.seleccionada">
-                                <img src='{{ paises[4].flag }}' alt="" srcset="">
-                            </i>
-                            <i *ngIf="columna.iconSrc == 'book' && columna.seleccionada">
-                                <img src='{{ paises[7].flag }}' alt="" srcset="">
-                            </i>
-                            <i class="fa fa-circle icon" *ngIf="!columna.seleccionada"></i>
-            
-                        </td>
-                    </tr>
-                </table>
-    
-      <div align=center>
-      <button type="button" mat-raised-button (click)="guardarScore()" class="button1"  class="restart" color="primary" style="margin: 5px;">Guardar puntaje</button>
-    </div>
-    </div>
-
-
-
-
-  </mat-card-content>
-<mat-card-actions>
-  </mat-card-actions>
-
-
-        
-</mat-card>-->
+  <div *ngIf="estado == '2'" class="text-center">
+    <p><app-encuesta></app-encuesta></p>
+    <button class="btn btn-jugar" (click)="reiniciarJuego()">
+      Volver a jugar
+    </button>
+  </div>
+</div>
+<div class="col-4">
+    <p><app-memotestchat></app-memotestchat></p>
+    <app-score juego="memotest"></app-score>
+</div>
+</div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Score } from 'src/app/clases/score';
+import { ScoreService } from 'src/app/services/score.service';
 
 @Component({
   selector: 'app-piedra-papel-tijera',
@@ -11,7 +13,13 @@ export class PiedraPapelTijeraComponent implements OnInit {
   eleccionUsuario='';
   eleccionMaquina='';
   srcImagenElegida='';
-  constructor() { }
+  score:Score = new Score();
+  date:Date = new Date();
+  constructor(private scoreSvc:ScoreService) {
+    this.score.juego="ppt";
+    this.score.name=localStorage.getItem('token');
+    this.score.fecha = this.date.getDate().toString() + '/' + this.date.getMonth().toString();
+   }
 
   ngOnInit(): void {
   
@@ -45,32 +53,49 @@ export class PiedraPapelTijeraComponent implements OnInit {
     if(usuario=='piedra'){
       if(maquina=='papel'){
         resultado='4';
+        this.score.score="Derrota";
       }else if(maquina=='piedra'){
         resultado='3';
+        this.score.score="Empate";
+
       }
       else{
         resultado='2';
+        this.score.score="Victoria";
+
       }
     }else if(usuario=='papel'){
       if(maquina=='tijera'){
         resultado='4';
+        this.score.score="Derrota";
+
       }else if(maquina=='papel'){
         resultado='3';
+        this.score.score="Empate";
+
       }
       else{
         resultado='2';
+        this.score.score="Victoria";
+
       }
     }else if(usuario=='tijera'){
       if(maquina=='piedra'){
         resultado='4';
+        this.score.score="Derrota";
+
       }else if(maquina=='tijera'){
+        this.score.score="Empate";
+
         resultado='3';
       }
       else{
         resultado='2';
+        this.score.score="Victoria";
+
       }
     }
-
+    this.scoreSvc.Crear(this.score);
     return resultado;
   }
 }
